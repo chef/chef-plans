@@ -1,1 +1,19 @@
-# nothing yet, but stay tuned
+---
+expeditor:
+  defaults:
+    buildkite:
+      retry:
+        automatic:
+          limit: 1
+      timeout_in_minutes: 30
+
+steps:
+
+- label: ":windows: :ruby: ruby-plus-devkit plan"
+  commands:
+    - bin/ci/verify_a_plan.ps1 -Plan ruby-plus-devkit
+  expeditor:
+    executor:
+      windows:
+        os-version: 2016
+        shell: ["powershell", "-Command"]
