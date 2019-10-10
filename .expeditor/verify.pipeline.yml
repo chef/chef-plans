@@ -16,4 +16,3 @@ steps:
     executor:
       windows:
         os-version: 2016
-        shell: ["powershell", "-Command"]
