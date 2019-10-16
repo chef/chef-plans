@@ -24,7 +24,9 @@ function Invoke-Unpack {
 
 function Invoke-Build {
     Write-BuildLine "** Launch msys2 once in order to initialize the install"
-    Invoke-Expression -Command "cmd /c $HAB_CACHE_SRC_PATH/$pkg_dirname/msys64/msys2_shell.cmd exit /b 0" -Verbose
+    Invoke-Expression -Command "$HAB_CACHE_SRC_PATH/$pkg_dirname/msys64/msys2_shell.cmd -defterm -no-start" -Verbose
+    # The path separator in the -ILike value below must be a backslash for it will match properly
+    Get-Process | Where-Object Path -ILike "$HAB_CACHE_SRC_PATH\$pkg_dirname\*" | Stop-Process -Force
 }
 
 function Invoke-Install {
