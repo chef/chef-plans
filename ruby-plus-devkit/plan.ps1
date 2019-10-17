@@ -13,6 +13,18 @@ $pkg_bin_dirs=@(
 )
 $ruby_abi_version = [RegEx]::Replace($pkg_version, "\.\d+$", ".0")
 
+function Invoke-Begin {
+    $hab_version = (hab --version)
+    $hab_minor_version = $hab_version.split('.')[1]
+    if ( -not $? -Or $hab_minor_version -lt 85 ) {
+        Write-Warning "(╯°□°）╯︵ ┻━┻ I CAN'T WORK UNDER THESE CONDITIONS!"
+        Write-Warning ":habicat: I'm being built with $hab_version. I need at least Hab 0.85.0, because I use the -IsPath option for setting/pushing paths in SetupEnvironment."
+        throw "unable to build: required minimum version of Habitat not installed"
+    } else {
+        Write-BuildLine ":habicat: I think I have the version I need to build."
+    }
+}
+
 function Invoke-SetupEnvironment {
     Push-RuntimeEnv -IsPath "GEM_PATH" "$pkg_prefix/lib/ruby/gems/$ruby_abi_version"
 }
@@ -42,7 +54,7 @@ function Invoke-After {
     Get-ChildItem $pkg_prefix/lib/ruby/gems/$ruby_abi_version/gems -Filter "spec" -Recurse | Remove-Item -Recurse -Force
     Get-ChildItem $pkg_prefix/lib/ruby/gems/$ruby_abi_version/cache -Recurse | Remove-Item -Recurse -Force
     Get-ChildItem $pkg_prefix -Filter "unins000.*" | Remove-Item -Recurse -Force
-    Get-ChildItem $pkg_prefix -Filter "share" | Remove-Item -Recurse -Force   
+    Get-ChildItem $pkg_prefix -Filter "share" | Remove-Item -Recurse -Force
 }
 
 function Invoke-End {
