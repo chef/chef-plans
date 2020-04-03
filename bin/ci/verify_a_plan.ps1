@@ -13,8 +13,8 @@ $env:HAB_ORIGIN = 'ci'
 
 Write-Host "--- :8ball: :windows: Verifying $Plan"
 
-$hab_minor_version = (hab --version).split('.')[1]
-if ( -not $? -Or $hab_minor_version -lt 85 ) {
+[Version]$hab_version = (hab --version).split(" ")[1].split("/")[0]
+if ($hab_version -lt [Version]"0.85.0" ) {
     Write-Host "--- :habicat: Installing the version of Habitat required"
     Install-Habitat --version 0.85.0.20190916
     if (-not $?) { throw "unable to install required version of Habitat"}
