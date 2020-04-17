@@ -5,7 +5,7 @@ param(
 
 $PackageVersion = $PackageIdentifier.split('/')[2]
 
-Describe "ruby-plus-devkit27" {
+Describe "ruby27-plus-devkit" {
     Context "ruby" {
         It "is an executable" {
             hab pkg exec $PackageIdentifier ruby.exe --version

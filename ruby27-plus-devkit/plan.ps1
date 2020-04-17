@@ -1,4 +1,4 @@
-$pkg_name="ruby-plus-devkit27"
+$pkg_name="ruby27-plus-devkit"
 $pkg_origin="chef"
 $pkg_version="2.7.0"
 $pkg_revision="1"
