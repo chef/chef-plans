@@ -3,3 +3,9 @@ build_targets = [
   "x86_64-windows"
 ]
 plan_path = "ruby-plus-devkit"
+
+[ruby27-plus-devkit]
+build_targets = [
+  "x86_64-windows"
+]
+plan_path = "ruby27-plus-devkit"

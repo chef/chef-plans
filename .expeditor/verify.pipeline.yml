@@ -15,3 +15,10 @@ steps:
   expeditor:
     executor:
       windows:
+
+- label: ":windows: :ruby: ruby27-plus-devkit plan"
+  commands:
+    - bin/ci/verify_a_plan.ps1 -Plan ruby27-plus-devkit
+  expeditor:
+    executor:
+      windows:
