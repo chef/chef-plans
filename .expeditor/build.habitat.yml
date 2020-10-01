@@ -1,2 +1,12 @@
 ---
 origin: chef
+studio_secrets:
+  AWS_ACCESS_KEY_ID:
+    account: aws/private-cd
+    field: access_key_id
+  AWS_SECRET_ACCESS_KEY:
+    account: aws/private-cd
+    field: secret_access_key
+  AWS_SESSION_TOKEN:
+    account: aws/private-cd
+    field: session_token

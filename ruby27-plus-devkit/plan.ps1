@@ -4,17 +4,40 @@ $pkg_version="2.7.0"
 $pkg_revision="1"
 $pkg_maintainer="maintainers@chef.io"
 $pkg_license=@("Apache-2.0")
-$pkg_source="https://public-cd-buildkite-cache.s3-us-west-2.amazonaws.com/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
+$pkg_source="s3://habitat-buildkite-cache-chef-prod/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
 $pkg_shasum="af72cdb6afe2f5e04cb58bb11234c0d3d107d449482141b72dd8430a2ed1fe98"
 $pkg_bin_dirs=@(
     "bin"
     "/msys64/mingw64/bin"
     "/msys64/usr/bin"
 )
+$pkg_build_deps=("core/aws-cli")
 $ruby_abi_version = [RegEx]::Replace($pkg_version, "\.\d+$", ".0")
 
 function Invoke-SetupEnvironment {
     Push-RuntimeEnv -IsPath "GEM_PATH" "$pkg_prefix/lib/ruby/gems/$ruby_abi_version"
+}
+
+function Invoke-Download {
+    Push-Location $HAB_CACHE_SRC_PATH
+    try {
+        if ((Test-Path $pkg_filename) -and $pkg_shasum) {
+            Write-BuildLine "Found previous file '$pkg_filename', attempting to re-use"
+            if (_verify_file $pkg_filename $pkg_shasum) {
+                Write-BuildLine "Using cached and verified '$pkg_filename'"
+                return
+            } else {
+                Write-BuildLine "Clearing previous '$pkg_filename' file and re-attempting download"
+                Remove-Item $pkg_filename -Force
+            }
+        }
+
+        Write-BuildLine "Downloading '$pkg_source' to '$pkg_filename'"
+        aws s3 cp $pkg_source $pkg_filename
+        Write-BuildLine "Downloaded '$pkg_filename'"
+    } finally {
+        Pop-Location
+    }
 }
 
 function Invoke-Unpack {
