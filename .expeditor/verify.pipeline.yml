@@ -14,11 +14,17 @@ steps:
     - bin/ci/verify_a_plan.ps1 -Plan ruby-plus-devkit
   expeditor:
     executor:
-      windows:
+      docker:
+        host_os: windows
+        shell: [ "powershell", "-Command" ]
+
 
 - label: ":windows: :ruby: ruby27-plus-devkit plan"
   commands:
     - bin/ci/verify_a_plan.ps1 -Plan ruby27-plus-devkit
   expeditor:
     executor:
-      windows:
+      docker:
+        host_os: windows
+        shell: [ "powershell", "-Command" ]
+
