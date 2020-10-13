@@ -8,7 +8,7 @@ param (
     [ValidateNotNullorEmpty()]
     [string]$Plan
 )
-
+$env:HAB_LICENSE = "accept-no-persist"
 $env:HAB_ORIGIN = 'ci'
 
 Write-Host "--- :8ball: :windows: Verifying $Plan"
