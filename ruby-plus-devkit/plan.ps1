@@ -4,7 +4,7 @@ $pkg_version="2.6.5"
 $pkg_revision="1"
 $pkg_maintainer="maintainers@chef.io"
 $pkg_license=@("Apache-2.0")
-$pkg_source="https://public-cd-buildkite-cache.s3-us-west-2.amazonaws.com/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
+$pkg_source="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-${pkg_version}-${pkg_revision}/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
 $pkg_shasum="BD2050496A149C7258ED4E2E44103756CA3A05C7328A939F0FDC97AE9616A96D"
 $pkg_bin_dirs=@(
     "bin"
