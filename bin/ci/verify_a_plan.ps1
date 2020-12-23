@@ -46,6 +46,9 @@ try {
 
   Write-Host "--- :mag_right: Testing $Plan"
   powershell -File "./${Plan}/tests/test.ps1" -PackageIdentifier $pkg_ident
+  $status = $LASTEXITCODE
 } finally {
     Pop-Location
 }
+
+exit $status
