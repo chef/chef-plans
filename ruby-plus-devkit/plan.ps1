@@ -5,7 +5,7 @@ $pkg_revision="1"
 $pkg_maintainer="maintainers@chef.io"
 $pkg_license=@("Apache-2.0")
 $pkg_source="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-${pkg_version}-${pkg_revision}/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
-$pkg_shasum="BD2050496A149C7258ED4E2E44103756CA3A05C7328A939F0FDC97AE9616A96D"
+$pkg_shasum="6381fa0c683d4b9f8ceedaa6b8b1191a0c4029588f11f8c77979f6e2cc00dd98"
 $pkg_bin_dirs=@(
     "bin"
     "/msys64/mingw64/bin"
@@ -42,7 +42,7 @@ function Invoke-After {
     Get-ChildItem $pkg_prefix/lib/ruby/gems/$ruby_abi_version/gems -Filter "spec" -Recurse | Remove-Item -Recurse -Force
     Get-ChildItem $pkg_prefix/lib/ruby/gems/$ruby_abi_version/cache -Recurse | Remove-Item -Recurse -Force
     Get-ChildItem $pkg_prefix -Filter "unins000.*" | Remove-Item -Recurse -Force
-    Get-ChildItem $pkg_prefix -Filter "share" | Remove-Item -Recurse -Force   
+    Get-ChildItem $pkg_prefix -Filter "share" | Remove-Item -Recurse -Force
 }
 
 function Invoke-End {
