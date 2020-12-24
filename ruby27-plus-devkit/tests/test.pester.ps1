@@ -8,26 +8,26 @@ $PackageVersion = $PackageIdentifier.split('/')[2]
 Describe "ruby27-plus-devkit" {
     Context "ruby" {
         It "is an executable" {
-            hab pkg exec $PackageIdentifier ruby.exe --version
+            hab pkg exec $PackageIdentifier ruby.exe -v
             $? | Should be $true
         }
 
         It "is the expected version" {
-            $version_output = (hab pkg exec $PackageIdentifier ruby.exe --version | Out-String)
+            $version_output = (hab pkg exec $PackageIdentifier ruby.exe -v | Out-String)
             $version_output | Should MatchExactly "ruby ${PackageVersion}p"
         }
     }
 
     Context "gem" {
         It "is an executable" {
-            hab pkg exec $PackageIdentifier gem.cmd --version
+            hab pkg exec $PackageIdentifier gem.cmd -v
             $? | Should be $true
         }
     }
 
     Context "bundle" {
         It "is an executable" {
-            hab pkg exec $PackageIdentifier bundle.cmd --version
+            hab pkg exec $PackageIdentifier bundle.cmd -v
             $? | Should be $true
         }
     }
