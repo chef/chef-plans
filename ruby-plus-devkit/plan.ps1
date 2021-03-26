@@ -2,7 +2,9 @@ $pkg_name="ruby-plus-devkit"
 $pkg_origin="chef"
 $pkg_version="2.6.6"
 $pkg_revision="1"
-$pkg_maintainer="maintainers@chef.io"
+$pkg_description="A repackaging of RubyInstaller2 and its MSYS2-based DevKit."
+$pkg_maintainer="The Chef Maintainers <maintainers@chef.io>"
+$pkg_upstream_url="https://github.com/chef/chef-plans"
 $pkg_license=@("Apache-2.0")
 $pkg_source="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-${pkg_version}-${pkg_revision}/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
 $pkg_shasum="6381fa0c683d4b9f8ceedaa6b8b1191a0c4029588f11f8c77979f6e2cc00dd98"
@@ -12,6 +14,18 @@ $pkg_bin_dirs=@(
     "/msys64/usr/bin"
 )
 $ruby_abi_version = [RegEx]::Replace($pkg_version, "\.\d+$", ".0")
+
+function Invoke-Begin {
+    $hab_version = (hab --version)
+    $hab_minor_version = $hab_version.split('.')[1]
+    if ( -not $? -Or $hab_minor_version -lt 85 ) {
+        Write-Warning "(╯°□°）╯︵ ┻━┻ I CAN'T WORK UNDER THESE CONDITIONS!"
+        Write-Warning ":habicat: I'm being built with $hab_version. I need at least Hab 0.85.0, because I use the -IsPath option for setting/pushing paths in SetupEnvironment."
+        throw "unable to build: required minimum version of Habitat not installed"
+    } else {
+        Write-BuildLine ":habicat: I think I have the version I need to build."
+    }
+}
 
 function Invoke-SetupEnvironment {
     Push-RuntimeEnv -IsPath "GEM_PATH" "$pkg_prefix/lib/ruby/gems/$ruby_abi_version"
