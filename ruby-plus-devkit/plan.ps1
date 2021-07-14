@@ -1,13 +1,13 @@
 $pkg_name="ruby-plus-devkit"
 $pkg_origin="chef"
-$pkg_version="2.6.6"
-$pkg_revision="2"
+$pkg_version="2.6.8"
+$pkg_revision="1"
 $pkg_description="A repackaging of RubyInstaller2 and its MSYS2-based DevKit."
 $pkg_maintainer="The Chef Maintainers <maintainers@chef.io>"
 $pkg_upstream_url="https://github.com/chef/chef-plans"
 $pkg_license=@("Apache-2.0")
 $pkg_source="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-${pkg_version}-${pkg_revision}/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
-$pkg_shasum="678fb941c75bdc0fed902e78d5e984410c0b166a53cd3a0b036046ceace91f47"
+$pkg_shasum="77ac4f687c758e497e1be0737db3ff63a45918ec9b8ecd98474ad9f768230c50"
 $pkg_bin_dirs=@(
     "bin"
     "/msys64/mingw64/bin"
