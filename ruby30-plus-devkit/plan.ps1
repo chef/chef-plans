@@ -1,11 +1,11 @@
 $pkg_name="ruby30-plus-devkit"
 $pkg_origin="chef"
-$pkg_version="3.0.1"
+$pkg_version="3.0.2"
 $pkg_revision="1"
 $pkg_maintainer="maintainers@chef.io"
 $pkg_license=@("Apache-2.0")
 $pkg_source="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-${pkg_version}-${pkg_revision}/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
-$pkg_shasum="c299be41314888620d3bb41e1c30d8497c15858172a372b1e7a6d8c826f111be"
+$pkg_shasum="1ba99bc7d5dbc05243de0649f9ca6fa652844c96e173d52b51bf51360acd7ae0"
 $pkg_bin_dirs=@(
     "bin"
     "/msys64/mingw64/bin"

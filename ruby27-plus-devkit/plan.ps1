@@ -1,11 +1,11 @@
 $pkg_name="ruby27-plus-devkit"
 $pkg_origin="chef"
-$pkg_version="2.7.2"
+$pkg_version="2.7.4"
 $pkg_revision="1"
 $pkg_maintainer="maintainers@chef.io"
 $pkg_license=@("Apache-2.0")
 $pkg_source="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-${pkg_version}-${pkg_revision}/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
-$pkg_shasum="a4865d9e555b6061382741d041455d91b058bfcbd006766663cccb5bb6bb20d3"
+$pkg_shasum="8733b563f1865684cce28ec5ad7cead4535c57dcd7120427d0b159f4d77a3b00"
 $pkg_bin_dirs=@(
     "bin"
     "/msys64/mingw64/bin"
