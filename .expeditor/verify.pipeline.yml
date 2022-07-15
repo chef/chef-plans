@@ -36,3 +36,12 @@ steps:
       docker:
         host_os: windows
         shell: [ "powershell", "-Command" ]
+
+- label: ":windows: :ruby: ruby31-plus-devkit plan"
+  commands:
+    - bin/ci/verify_a_plan.ps1 -Plan ruby31-plus-devkit
+  expeditor:
+    executor:
+      docker:
+        host_os: windows
+        shell: [ "powershell", "-Command" ]
