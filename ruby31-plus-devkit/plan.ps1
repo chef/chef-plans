@@ -32,9 +32,6 @@ function Invoke-Build {
 function Invoke-Install {
     Write-BuildLine "** Copying files to the package location"
     Copy-Item "$HAB_CACHE_SRC_PATH/$pkg_dirname/*" "$pkg_prefix" -Recurse -Force
-
-    Write-BuildLine "** Include git because why not at this point."
-    # Invoke-Expression -Command "$pkg_prefix/bin/ridk.cmd exec pacman -S --noconfirm git" -Verbose
 }
 
 function Invoke-After {
