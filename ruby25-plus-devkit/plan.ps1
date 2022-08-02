@@ -1,4 +1,4 @@
-$pkg_name="ruby-plus-devkit"
+$pkg_name="ruby25-plus-devkit"
 $pkg_origin="chef"
 $pkg_version="2.5.8"
 $pkg_revision="2"
