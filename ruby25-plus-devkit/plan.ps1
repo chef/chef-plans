@@ -26,17 +26,20 @@ function Invoke-Unpack {
 
 function Invoke-Build {
     Write-BuildLine "** Launch msys2 once in order to initialize the install"
-    Start-Process "$HAB_CACHE_SRC_PATH/$pkg_dirname/msys64/msys2_shell.cmd" -ArgumentList "-defterm -no-start"
-    # The path separator in the -ILike value below must be a backslash for it will match properly
-    Get-Process | Where-Object Path -ILike "$HAB_CACHE_SRC_PATH\$pkg_dirname\*" | Stop-Process -Force
+    Invoke-Expression -Command "$HAB_CACHE_SRC_PATH/$pkg_dirname/msys64/msys2_shell.cmd -defterm -no-start -c exit" -Verbose
+    if($LASTEXITCODE -ne 0) { Write-Error "msbuild failed!" }
 }
 
 function Invoke-Install {
     Write-BuildLine "** Copying files to the package location"
     Copy-Item "$HAB_CACHE_SRC_PATH/$pkg_dirname/*" "$pkg_prefix" -Recurse -Force
 
+    Write-BuildLine "** Update broken keyring."
+    Invoke-Expression -Command "$pkg_prefix/bin/ridk.cmd exec pacman -Sy --noconfirm msys2-keyring " -Verbose
+    if($LASTEXITCODE -ne 0) { Write-Error "msbuild failed!" }
     Write-BuildLine "** Include git because why not at this point."
     Invoke-Expression -Command "$pkg_prefix/bin/ridk.cmd exec pacman -S --noconfirm git" -Verbose
+    if($LASTEXITCODE -ne 0) { Write-Error "msbuild failed!" }
 }
 
 function Invoke-After {

@@ -24,7 +24,6 @@ Describe "ruby25-plus-devkit" {
             $? | Should be $true
         }
     }
-}
 
     Context "setup environment paths" {
         $PackagePath = (hab pkg path $PackageIdentifier)
