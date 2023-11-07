@@ -14,7 +14,7 @@ Describe "ruby32-plus-devkit" {
 
         It "is the expected version" {
             $version_output = (hab pkg exec $PackageIdentifier ruby.exe -v | Out-String)
-            $version_output | Should MatchExactly "ruby ${PackageVersion}p"
+            $version_output | Should MatchExactly "ruby ${PackageVersion}"
         }
     }
 
