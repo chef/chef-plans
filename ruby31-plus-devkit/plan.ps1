@@ -1,11 +1,11 @@
 $pkg_name="ruby31-plus-devkit"
 $pkg_origin="chef"
-$pkg_version="3.1.2"
+$pkg_version="3.1.6"
 $pkg_revision="1"
 $pkg_maintainer="maintainers@chef.io"
 $pkg_license=@("Apache-2.0")
 $pkg_source="https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-${pkg_version}-${pkg_revision}/rubyinstaller-devkit-${pkg_version}-${pkg_revision}-x64.exe"
-$pkg_shasum = "5f0fd4a206b164a627c46e619d2babbcafb0ed4bc3e409267b9a73b6c58bdec1"
+$pkg_shasum = "42f71849f0ae053df8d40182e00ee82a98ac5faa69d815fa850566f2d3711174"
 $pkg_bin_dirs=@(
     "bin"
     "/msys64/ucrt64/bin"
