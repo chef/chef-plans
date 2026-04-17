@@ -1,13 +1,5 @@
 # Chef Plans
 
-**Umbrella Project**: [Chef Foundation](https://github.com/chef/chef-oss-practices/blob/master/projects/chef-foundation.md)
-
-**Project State**: [Active](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md#active)
-
-**Issues [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md)**: None
-
-**Pull Request [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md)**: None
-
 ## What is this?
 
 This repository contains [Chef Habitat](https://www.habitat.sh) plans that are needed to support other Chef projects. You should generally not use these plans for your own projects as they are tuned for specific uses and no guarantees are made regarding breaking changes or long term support.
